@@ -38,6 +38,9 @@ object Versions {
     const val retrofit = "2.9.0"
     const val loggingInterceptor = "4.9.0"
 
+    //Paging
+    const val paging = "3.0.1"
+
     //Version codes for all the test libraries
     const val junit4 = "4.13.1"
     const val testRunner = "1.3.1-alpha03"
@@ -119,6 +122,10 @@ object Libraries {
 
     //Coil
     const val coil = "io.coil-kt:coil:${Versions.coil}"
+
+    //Paging3
+    const val paging  = "androidx.paging:paging-runtime-ktx:${Versions.paging}"
+
 }
 
 object TestLibraries {

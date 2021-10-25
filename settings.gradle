@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "MaQuotes"
 include ':app'
+include ':domain'
