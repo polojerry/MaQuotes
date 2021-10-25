@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     id("kotlin-android")
     id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -36,16 +37,19 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    //Ktx Core
-    api(Libraries.ktxCore)
+    //Local Modules
+    implementation(project(BuildModules.domainModule))
 
-    //Coroutine
-    api(Libraries.coroutinesCore)
+    //Retrofit
+    api(Libraries.retrofit)
+    api(Libraries.gson)
+    api(Libraries.loggingInterceptor)
 
-    //Paging
-    api(Libraries.paging)
+    //Hilt
+    api(Libraries.hilt)
+    kapt(Libraries.hiltKapt)
 
-    //Logging: Timber
-    api (Libraries.timber)
-
+    //Test
+    testImplementation(TestLibraries.junit4)
+    testImplementation(TestLibraries.truth)
 }
