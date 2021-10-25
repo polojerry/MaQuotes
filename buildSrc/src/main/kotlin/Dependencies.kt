@@ -51,6 +51,7 @@ object Versions {
     const val testCore = "1.0.0"
     const val mockWebServer = "4.9.0"
     const val roboelectric = "4.5-beta-1"
+    const val mockito = "4.0.0"
 
     // Gradle Plugins
     const val gradleBuild = "7.0.3"
@@ -141,6 +142,7 @@ object TestLibraries {
     const val room = "androidx.room:room-testing:${Versions.room}"
     const val mockWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.mockWebServer}"
     const val roboelectric = "org.robolectric:robolectric:${Versions.roboelectric}"
+    const val mockitoKotlin = "org.mockito.kotlin:mockito-kotlin:${Versions.mockito}"
 }
 
 
@@ -154,7 +156,6 @@ object AndroidSdk {
 }
 
 object BuildModules {
-    const val sharedModule = ":shared"
     const val domainModule = ":domain"
-    const val networkModule = ":data:network"
+    const val remoteModule = ":data:remote"
 }

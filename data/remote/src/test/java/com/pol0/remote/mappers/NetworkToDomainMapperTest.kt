@@ -1,4 +1,4 @@
-package com.pol0.remote
+package com.pol0.remote.mappers
 
 import com.google.common.truth.Truth
 import com.pol0.remote.fakes.DataObjects

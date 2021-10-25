@@ -10,3 +10,4 @@ rootProject.name = "MaQuotes"
 include ':app'
 include ':domain'
 include ':data:remote'
+include ':data:repository'

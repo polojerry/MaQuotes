@@ -39,6 +39,7 @@ dependencies {
 
     //Local Modules
     implementation(project(BuildModules.domainModule))
+    implementation(project(BuildModules.remoteModule))
 
     //Retrofit
     implementation(Libraries.retrofit)
@@ -52,5 +53,5 @@ dependencies {
     //Test
     testImplementation(TestLibraries.junit4)
     testImplementation(TestLibraries.truth)
-    testImplementation(TestLibraries.mockWebServer)
+    testImplementation(TestLibraries.mockitoKotlin)
 }
