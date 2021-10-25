@@ -6,6 +6,10 @@
     <color name="teal_400">#26A69A</color>
     <color name="teal_700">#00796b</color>
 
+    <color name="cyan_100">#b2ebf2</color>
+
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    
+
 </resources>
