@@ -9,7 +9,6 @@ import com.pol0.domain.repository.QuotesRepository
 import com.pol0.local.database.QuotesDatabase
 import com.pol0.local.mappers.toDomain
 import com.pol0.remote.api.QuoteApi
-import com.pol0.repository.paggingsource.QuotePagingSource
 import com.pol0.repository.remotemadiators.QuotesRemoteMediator
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -37,8 +36,28 @@ class QuoteRepositoryImpl @Inject constructor(
         ).flow
     }
 
+    override fun getFavouriteQuotes(): Flow<PagingData<Quote>> {
+
+        val pagingSourceFactory =
+            quotesDatabase.quotesDao.favouriteQuotes().map {
+                it.toDomain()
+            }.asPagingSourceFactory()
+
+
+        @OptIn(ExperimentalPagingApi::class)
+        return Pager(
+            config = PagingConfig(pageSize = FAVOURITE_PAGE_SIZE, enablePlaceholders = false),
+            pagingSourceFactory = pagingSourceFactory
+        ).flow
+    }
+
+    override fun addFavouriteQuote(quote: Quote): Long {
+        return quotesDatabase.quotesDao.toggleFavourite(quote.id, !quote.isFavourite)
+    }
+
     companion object {
         const val NETWORK_PAGE_SIZE = 30
+        const val FAVOURITE_PAGE_SIZE = 4
     }
 
 }
