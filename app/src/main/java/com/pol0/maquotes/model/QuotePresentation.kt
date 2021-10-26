@@ -9,5 +9,5 @@ data class QuotePresentation(
     val dateModified: String,
     val length: Int,
     val tags: List<String>,
-    val isFavourite : Boolean = false
+    val isFavourite: Boolean = false
 )

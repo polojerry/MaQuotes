@@ -15,4 +15,9 @@
         tools:layout="@layout/favourites_fragment"
         android:name="com.pol0.maquotes.ui.favouritesFragment.FavouritesFragment"
         android:label="FavouritesFragment" />
+    <fragment
+        android:id="@+id/authorsFragment"
+        android:name="com.pol0.maquotes.ui.authorsFragment.AuthorsFragment"
+        android:label="AuthorsFragment"
+        tools:layout="@layout/authors_fragment"/>
 </navigation>

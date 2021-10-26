@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.CombinedLoadStates
@@ -14,11 +15,14 @@ import androidx.paging.PagingData
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.MarginPageTransformer
 import com.google.android.material.snackbar.Snackbar
-import com.pol0.domain.models.Quote
+import com.pol0.maquotes.adapters.AuthorAdapter
 import com.pol0.maquotes.adapters.QuoteAdapter
 import com.pol0.maquotes.adapters.QuoteAdapter.OnClickListener
 import com.pol0.maquotes.databinding.HomeFragmentBinding
+import com.pol0.maquotes.model.AuthorPresentation
 import com.pol0.maquotes.model.QuotePresentation
+import com.pol0.maquotes.ui.authorsFragment.AuthorsViewModel
+import com.pol0.maquotes.ui.authorsFragment.AuthorsViewModel.AuthorsUiState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.collect
@@ -30,9 +34,11 @@ import kotlin.math.abs
 class HomeFragment : Fragment() {
 
     private val viewModel: HomeViewModel by viewModels()
+    private val authorsViewModel: AuthorsViewModel by activityViewModels()
 
     private lateinit var binding: HomeFragmentBinding
     private lateinit var quoteAdapter: QuoteAdapter
+    private lateinit var recommendedAuthorAdapter: AuthorAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,6 +61,7 @@ class HomeFragment : Fragment() {
         quoteAdapter = QuoteAdapter(OnClickListener { quote ->
             addToFavourite(quote)
         })
+        recommendedAuthorAdapter = AuthorAdapter()
 
         val compositePageTransformer = CompositePageTransformer().apply {
             addTransformer(MarginPageTransformer(40))
@@ -71,15 +78,21 @@ class HomeFragment : Fragment() {
             offscreenPageLimit = 3
             setPageTransformer(compositePageTransformer)
         }
+        binding.recyclerViewRecommendedAuthors.adapter = recommendedAuthorAdapter
     }
 
     private fun addToFavourite(quote: QuotePresentation) {
         lifecycleScope.launch {
-            viewModel.addToFavourite(quote).collect {rows->
-                if(rows != -1L){
-                    Snackbar.make(binding.root, "Successfully added to favourites", Snackbar.LENGTH_SHORT).show()
-                }else{
-                    Snackbar.make(binding.root, "Failed to add favourites", Snackbar.LENGTH_SHORT).show()
+            viewModel.addToFavourite(quote).collect { rows ->
+                if (rows != -1L) {
+                    Snackbar.make(
+                        binding.root,
+                        "Successfully added to favourites",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
+                } else {
+                    Snackbar.make(binding.root, "Failed to add favourites", Snackbar.LENGTH_SHORT)
+                        .show()
                 }
 
             }
@@ -102,12 +115,45 @@ class HomeFragment : Fragment() {
             }
         }
 
+        lifecycleScope.launchWhenCreated {
+            authorsViewModel.recommendedAuthors.collect { state ->
+                when (state) {
+                    is AuthorsUiState.LoadedData -> {
+                        displayRecommendedAuthors(state.pagedAuthors)
+                    }
+                    else -> {
+
+                    }
+                }
+
+            }
+        }
+
         lifecycleScope.launch {
             quoteAdapter.loadStateFlow.collect { loadState ->
                 displayLoadingStates(loadState)
             }
         }
 
+        lifecycleScope.launch {
+            recommendedAuthorAdapter.loadStateFlow.collect { loadState ->
+                displayLoadingStatesAuthors(loadState)
+            }
+        }
+
+    }
+
+    private fun displayLoadingStatesAuthors(loadState: CombinedLoadStates) {
+        val isInitialLoadOrRefresh = loadState.source.refresh is LoadState.Loading
+        binding.progressRecommendedAuthors.isVisible = isInitialLoadOrRefresh
+
+        if (loadState.refresh is LoadState.NotLoading && recommendedAuthorAdapter.itemCount > 0) {
+            binding.textLabelRecommendedAuthors.isVisible = true
+        }
+    }
+
+    private suspend fun displayRecommendedAuthors(pagedAuthors: PagingData<AuthorPresentation>) {
+        recommendedAuthorAdapter.submitData(pagedAuthors)
     }
 
     private suspend fun displayQuotes(pagedQuotes: PagingData<QuotePresentation>) {

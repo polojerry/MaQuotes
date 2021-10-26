@@ -1,10 +1,9 @@
 package com.pol0.maquotes.di
 
+import com.pol0.domain.repository.AuthorsRepository
 import com.pol0.domain.repository.FavouriteQuotesRepository
 import com.pol0.domain.repository.QuotesRepository
-import com.pol0.domain.usecases.AddQuoteToFavouriteUseCase
-import com.pol0.domain.usecases.FetchQuotesUseCase
-import com.pol0.domain.usecases.GetFavouriteQuotesUseCase
+import com.pol0.domain.usecases.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,5 +29,17 @@ object UseCaseModule {
     @Singleton
     fun providesGetFavouriteQuotesUseCase(favouriteQuotesRepository: FavouriteQuotesRepository) : GetFavouriteQuotesUseCase {
         return GetFavouriteQuotesUseCase(favouriteQuotesRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun providesFetchAuthorsUseCase(authorsRepository: AuthorsRepository) : FetchAuthorsUseCase {
+        return FetchAuthorsUseCase(authorsRepository)
+    }
+
+    @Provides
+    @Singleton
+    fun providesRecommendedAuthorsUseCase(authorsRepository: AuthorsRepository) : FetchRecommendedAuthorsUseCase {
+        return FetchRecommendedAuthorsUseCase(authorsRepository)
     }
 }

@@ -5,8 +5,13 @@
         android:icon="@drawable/ic_home"
         android:title="@string/home" />
 
+    <item android:id="@+id/authorsFragment"
+        android:icon="@drawable/ic_history_edu"
+        android:title="@string/authors"/>
+
     <item
         android:id="@+id/favouritesFragment"
         android:icon="@drawable/ic_favorite_border"
         android:title="@string/favourites" />
+
 </menu>
