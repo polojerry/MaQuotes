@@ -8,10 +8,19 @@ import org.junit.Test
 class NetworkToDomainMapperTest {
 
     @Test
-    fun `mapping network model to domain model should return the correct model `() {
-        val expected = DataObjects.quote
+    fun `mapping quote network model to domain model should return the correct model `() {
+        val expected = DataObjects.Quote.quote
 
-        val actual = DataObjects.networkQuote.toDomain()
+        val actual = DataObjects.Quote.networkQuote.toDomain()
+
+        Truth.assertThat(actual).isEqualTo(expected)
+    }
+
+    @Test
+    fun `mapping author network model to domain model should return the correct model `() {
+        val expected = DataObjects.Author.author
+
+        val actual = DataObjects.Author.authorNetwork.toDomain()
 
         Truth.assertThat(actual).isEqualTo(expected)
     }

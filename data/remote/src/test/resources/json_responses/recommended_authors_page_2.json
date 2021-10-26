@@ -1,0 +1,229 @@
+{
+  "count": 20,
+  "totalCount": 700,
+  "page": 2,
+  "totalPages": 35,
+  "lastItemIndex": 40,
+  "results": [
+    {
+      "link": "https://en.wikipedia.org/wiki/Woody_Allen",
+      "bio": "Woody Allen (December 1, 1935) is an American film director, writer, actor, and comedian whose career spans more than six decades and multiple Academy Award-winning movies. He began his career as a comedy writer on Sid Caesar's comedy variety program, Your Show of Shows, working alongside Mel Brooks, Carl Reiner, Larry Gelbart and Neil Simon.",
+      "description": "American film director",
+      "_id": "7tvBr_cHW",
+      "name": "Woody Allen",
+      "quoteCount": 14,
+      "slug": "woody-allen",
+      "dateAdded": "2020-09-29",
+      "dateModified": "2020-09-29"
+    },
+    {
+      "link": "https://en.wikipedia.org/wiki/Winston_Churchill",
+      "bio": "Sir Winston Leonard Spencer-Churchill  (30 November 1874 – 24 January 1965) was a British politician, army officer, and writer. He was the Prime Minister of the United Kingdom from 1940 to 1945, when he led Britain to victory in the Second World War, and again from 1951 to 1955.",
+      "description": "British statesman",
+      "_id": "FEM0nF4bj5r7",
+      "name": "Winston Churchill",
+      "quoteCount": 13,
+      "slug": "winston-churchill",
+      "dateAdded": "2019-07-03",
+      "dateModified": "2019-07-03"
+    },
+    {
+      "link": "https://en.wikipedia.org/wiki/Eleanor_Roosevelt",
+      "bio": "Anna Eleanor Roosevelt (October 11, 1884 – November 7, 1962) was an American political figure, diplomat and activist. She served as the First Lady of the United States from March 4, 1933, to April 12, 1945, during her husband President Franklin D. Roosevelt's four terms in office, making her the longest-serving First Lady of the United States.",
+      "description": "American political figure",
+      "_id": "1X7NWb1oyd21",
+      "name": "Eleanor Roosevelt",
+      "quoteCount": 13,
+      "slug": "eleanor-roosevelt",
+      "dateAdded": "2020-01-31",
+      "dateModified": "2020-01-31"
+    },
+    {
+      "link": "https://en.wikipedia.org/wiki/Carl_Jung",
+      "bio": "Carl Gustav Jung was a Swiss psychiatrist and psychoanalyst who founded analytical psychology. Jung's work was influential in the fields of psychiatry, anthropology, archaeology, literature, philosophy, and religious studies. Jung worked as a research scientist at the famous Burghölzli hospital, under Eugen Bleuler.",
+      "description": "Swiss psychiatrist",
+      "_id": "-LYBJJujV7RL",
+      "name": "Carl Jung",
+      "quoteCount": 13,
+      "slug": "carl-jung",
+      "dateAdded": "2020-12-17",
+      "dateModified": "2020-12-17"
+    },
+    {
+      "link": "https://en.wikipedia.org/wiki/Seneca_the_Younger",
+      "bio": "Seneca the Younger, fully Lucius Annaeus Seneca and also known simply as Seneca, was a Roman Stoic philosopher, statesman, dramatist, and—in one work—satirist of the Silver Age of Latin literature. Seneca was born in Corduba in Hispania, and raised in Rome, where he was trained in rhetoric and philosophy.",
+      "description": "Roman Stoic philosopher",
+      "_id": "TyeFCuRgEQjD",
+      "name": "Seneca the Younger",
+      "quoteCount": 12,
+      "slug": "seneca-the-younger",
+      "dateAdded": "2019-10-18",
+      "dateModified": "2019-10-18"
+    },
+    {
+      "link": "https://en.wikipedia.org/wiki/Elbert_Hubbard",
+      "bio": "Elbert Green Hubbard (June 19, 1856 – May 7, 1915) was an American writer, publisher, artist, and philosopher.  Raised in Hudson, Illinois, he had early success as a traveling salesman for the Larkin Soap Company.",
+      "description": "American writer and philosopher",
+      "_id": "CBoxna3kOgDk",
+      "name": "Elbert Hubbard",
+      "quoteCount": 12,
+      "slug": "elbert-hubbard",
+      "dateAdded": "2020-03-11",
+      "dateModified": "2020-03-11"
+    },
+    {
+      "link": "https://en.wikipedia.org/wiki/Mahatma_Gandhi",
+      "bio": "Mohandas Karamchand Gandhi (2 October 1869 – 30 January 1948) was an Indian lawyer, anti-colonial nationalist, and political ethicist, who employed nonviolent resistance to lead the successful campaign for India's independence from British Rule, and in turn inspire movements for civil rights and freedom across the world.",
+      "description": "Indian lawyer and activist",
+      "_id": "4J6_dx73YbT5",
+      "name": "Mahatma Gandhi",
+      "quoteCount": 12,
+      "slug": "mahatma-gandhi",
+      "dateAdded": "2020-12-17",
+      "dateModified": "2020-12-17"
+    },
+    {
+      "link": "https://en.wikipedia.org/wiki/Leonardo_da_Vinci",
+      "bio": "Leonardo di ser Piero da Vinci, known as Leonardo da Vinci, was an Italian polymath of the Renaissance whose areas of interest included invention, drawing, painting, sculpture, architecture, science, music, mathematics, engineering, literature, anatomy, geology, astronomy, botany, paleontology, and cartography.",
+      "description": "Italian Renaissance polymath",
+      "_id": "v-beNXVk_I9v",
+      "name": "Leonardo da Vinci",
+      "quoteCount": 11,
+      "slug": "leonardo-da-vinci",
+      "dateAdded": "2019-06-27",
+      "dateModified": "2019-06-27"
+    },
+    {
+      "link": "https://en.wikipedia.org/wiki/Plato",
+      "bio": "Plato (428 – 348 BC) was an Athenian philosopher during the Classical period in Ancient Greece, founder of the Platonist school of thought, and the Academy, the first institution of higher learning in the Western world.",
+      "description": "Greek philosopher",
+      "_id": "VtJS8G9y5FL1",
+      "name": "Plato",
+      "quoteCount": 11,
+      "slug": "plato",
+      "dateAdded": "2019-08-16",
+      "dateModified": "2019-08-16"
+    },
+    {
+      "link": "https://en.wikipedia.org/wiki/Helen_Keller",
+      "bio": "Helen Adams Keller (June 27, 1880 – June 1, 1968) was an American author, political activist, and lecturer. She was the first deaf-blind person to earn a Bachelor of Arts degree.",
+      "description": "American author",
+      "_id": "pYjZMId1ilhK",
+      "name": "Helen Keller",
+      "quoteCount": 11,
+      "slug": "helen-keller",
+      "dateAdded": "2019-09-08",
+      "dateModified": "2019-09-08"
+    },
+    {
+      "link": "https://en.wikipedia.org/wiki/Mark_Twain",
+      "bio": "Samuel Langhorne Clemens (November 30, 1835 – April 21, 1910), known by his pen name Mark Twain, was an American writer, humorist, entrepreneur, publisher, and lecturer.",
+      "description": "American author",
+      "_id": "zbADvkP0r05L",
+      "name": "Mark Twain",
+      "quoteCount": 11,
+      "slug": "mark-twain",
+      "dateAdded": "2019-12-13",
+      "dateModified": "2019-12-13"
+    },
+    {
+      "link": "https://en.wikipedia.org/wiki/Pablo_Picasso",
+      "bio": "Pablo Ruiz Picasso (25 October 1881 – 8 April 1973) was a Spanish painter, sculptor, printmaker, ceramicist, stage designer, poet and playwright who spent most of his adult life in France. Regarded as one of the most influential artists of the 20th century, he is known for co-founding the Cubist movement, the invention of constructed sculpture, the co-invention of collage, and for the wide variety of styles that he helped develop and explore.",
+      "description": "Artist",
+      "_id": "atthH9QDwIJB",
+      "name": "Pablo Picasso",
+      "quoteCount": 10,
+      "slug": "pablo-picasso",
+      "dateAdded": "2019-08-03",
+      "dateModified": "2019-08-03"
+    },
+    {
+      "link": "https://en.wikipedia.org/wiki/Mother_Teresa",
+      "bio": "Mary Teresa Bojaxhiu (26 August 1910 – 5 September 1997), commonly known as Mother Teresa and honoured in the Catholic Church as Saint Teresa of Calcutta, was an Albanian-Indian Roman Catholic nun and missionary. She was born in Skopje (now the capital of North Macedonia), then part of the Kosovo Vilayet of the Ottoman Empire.",
+      "description": "Saint",
+      "_id": "y7OXxqCaXKVa",
+      "name": "Mother Teresa",
+      "quoteCount": 10,
+      "slug": "mother-teresa",
+      "dateAdded": "2020-04-15",
+      "dateModified": "2020-04-15"
+    },
+    {
+      "link": "https://en.wikipedia.org/wiki/Sophocles",
+      "bio": "Sophocles (497 – 406 BC) is one of three ancient Greek tragedians whose plays have survived.",
+      "description": "Athenian playwright",
+      "_id": "bBwlN7LI2Jtu",
+      "name": "Sophocles",
+      "quoteCount": 10,
+      "slug": "sophocles",
+      "dateAdded": "2020-06-24",
+      "dateModified": "2020-06-24"
+    },
+    {
+      "link": "https://en.wikipedia.org/wiki/Thomas_Jefferson",
+      "bio": "Thomas Jefferson (April 13, 1743 – July 4, 1826) was an American statesman, diplomat, lawyer, architect, philosopher, and Founding Father who served as the third president of the United States from 1801 to 1809. He previously served as the second vice president of the United States from 1797 to 1801.",
+      "description": "3rd president of the United States",
+      "_id": "Zy4xV5ItRxmv",
+      "name": "Thomas Jefferson",
+      "quoteCount": 10,
+      "slug": "thomas-jefferson",
+      "dateAdded": "2020-09-09",
+      "dateModified": "2020-09-09"
+    },
+    {
+      "link": "https://en.wikipedia.org/wiki/Oprah_Winfrey",
+      "bio": "Oprah Gail Winfrey (born January 29, 1954) is an American media executive, actress, talk show host, television producer, and philanthropist. She is best known for her talk show, The Oprah Winfrey Show, broadcast from Chicago, which was the highest-rated television program of its kind in history and ran in national syndication for 25 years from 1986 to 2011.",
+      "description": "American talk show host",
+      "_id": "_D1S6Y4-GLyL",
+      "name": "Oprah Winfrey",
+      "quoteCount": 10,
+      "slug": "oprah-winfrey",
+      "dateAdded": "2021-03-08",
+      "dateModified": "2021-03-08"
+    },
+    {
+      "link": "https://en.wikipedia.org/wiki/Thomas_Edison",
+      "bio": "Thomas Alva Edison (February 11, 1847 – October 18, 1931) was an American inventor and businessman who has been described as America's greatest inventor. He developed many devices in fields such as electric power generation, mass communication, sound recording, and motion pictures.",
+      "description": "American inventor ",
+      "_id": "PC4gkJPlknC3",
+      "name": "Thomas Edison",
+      "quoteCount": 10,
+      "slug": "thomas-edison",
+      "dateAdded": "2021-05-05",
+      "dateModified": "2021-05-05"
+    },
+    {
+      "link": "https://en.wikipedia.org/wiki/Napoleon",
+      "bio": "Napoléon Bonaparte was a French statesman and military leader who rose to prominence during the French Revolution and led several successful campaigns during the French Revolutionary Wars. He was Emperor of the French as Napoleon I from 1804 until 1814 and again briefly in 1815 during the Hundred Days.",
+      "description": "Statesman",
+      "_id": "xlnMchFC2VJG",
+      "name": "Napoleon",
+      "quoteCount": 9,
+      "slug": "napoleon",
+      "dateAdded": "2019-02-17",
+      "dateModified": "2019-02-17"
+    },
+    {
+      "link": "https://en.wikipedia.org/wiki/Benjamin_Disraeli",
+      "bio": "Benjamin Disraeli, 1st Earl of Beaconsfield,  (21 December 1804 – 19 April 1881) was a British politician of the Conservative Party who twice served as Prime Minister of the United Kingdom. He played a central role in the creation of the modern Conservative Party, defining its policies and its broad outreach.",
+      "description": "Former Prime Minister of the United Kingdom",
+      "_id": "xAJjt7yV9kyd",
+      "name": "Benjamin Disraeli",
+      "quoteCount": 9,
+      "slug": "benjamin-disraeli",
+      "dateAdded": "2019-03-24",
+      "dateModified": "2019-03-24"
+    },
+    {
+      "link": "https://en.wikipedia.org/wiki/Maya_Angelou",
+      "bio": "Maya Angelou (April 4, 1928 – May 28, 2014) was an American poet, singer, memoirist, and civil rights activist. She published seven autobiographies, three books of essays, several books of poetry, and is credited with a list of plays, movies, and television shows spanning over 50 years.",
+      "description": "American poet",
+      "_id": "DPghX8zgJ3CQ",
+      "name": "Maya Angelou",
+      "quoteCount": 9,
+      "slug": "maya-angelou",
+      "dateAdded": "2019-08-03",
+      "dateModified": "2019-08-03"
+    }
+  ]
+}

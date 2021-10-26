@@ -15,6 +15,18 @@ internal class QuoteApiRequestDispatcher : Dispatcher() {
                     .setBody(MockResponseFileReader("json_responses/quotes_page_6_response.json").content)
             }
 
+            "/authors?page=1" -> {
+                MockResponse()
+                    .setResponseCode(HttpURLConnection.HTTP_OK)
+                    .setBody(MockResponseFileReader("json_responses/authors_page_1_response.json").content)
+            }
+
+            "/authors?sortBy=quoteCount&order=desc&page=2" -> {
+                MockResponse()
+                    .setResponseCode(HttpURLConnection.HTTP_OK)
+                    .setBody(MockResponseFileReader("json_responses/recommended_authors_page_2.json").content)
+            }
+
             else -> throw IllegalArgumentException("Unknown Request Path ${request.path.toString()}")
         }
     }

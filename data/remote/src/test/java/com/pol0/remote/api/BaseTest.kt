@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit
 open class BaseTest {
 
     lateinit var quoteApi: QuoteApi
+    lateinit var authorsApi: AuthorsApi
 
     private lateinit var mockWebServer: MockWebServer
     private lateinit var okHttpClient: OkHttpClient
@@ -34,6 +35,13 @@ open class BaseTest {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(QuoteApi::class.java)
+
+        authorsApi = Retrofit.Builder()
+            .baseUrl(mockWebServer.url("/"))
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(AuthorsApi::class.java)
     }
 
     @After
