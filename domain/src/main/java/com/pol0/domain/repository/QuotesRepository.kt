@@ -8,5 +8,7 @@ interface QuotesRepository {
 
     fun fetchQuotes(): Flow<PagingData<Quote>>
 
-    fun getFavouriteQuotes() : Flow<PagingData<Quote>>
+    fun getFavouriteQuotes(): Flow<PagingData<Quote>>
+
+    fun addFavouriteQuote(quote: Quote): Long
 }
