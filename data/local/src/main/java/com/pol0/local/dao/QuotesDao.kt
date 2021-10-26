@@ -19,10 +19,4 @@ interface QuotesDao {
     @Query("DELETE FROM QUOTES_TABLE")
     fun clearQuotes()
 
-    @Query("UPDATE QUOTES_TABLE SET isFavourite=:isFavourite WHERE id=:quoteId ")
-    fun toggleFavourite(quoteId: String, isFavourite: Boolean) : Long
-
-    @Query("SELECT * FROM QUOTES_TABLE WHERE isFavourite = :favourite")
-    fun favouriteQuotes(favourite: Boolean = true): DataSource.Factory<Int, QuoteEntity>
-
 }

@@ -1,6 +1,6 @@
 package com.pol0.domain.models
 
-data class Quote(
+data class FavouriteQuote(
     val id: String,
     val author: String,
     val authorSlug: String,

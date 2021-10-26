@@ -1,17 +1,17 @@
 package com.pol0.domain.usecases
 
-import androidx.paging.PagingData
 import com.pol0.domain.models.Quote
+import com.pol0.domain.repository.FavouriteQuotesRepository
 import com.pol0.domain.repository.QuotesRepository
+import com.pol0.domain.usecases.base.BaseUseCase
+import com.pol0.domain.usecases.base.FlowBaseUseCase
 
-import kotlinx.coroutines.flow.Flow
+typealias AddQuoteToFavouriteBaseUseCase = BaseUseCase<Quote, Long>
 
-typealias AddQuoteToFavouriteBaseUseCase = FlowBaseUseCase<Quote, Long>
-
-class AddQuoteToFavouriteUseCase constructor(private val quotesRepository: QuotesRepository) :
+class AddQuoteToFavouriteUseCase constructor(private val favouriteQuotesRepository: FavouriteQuotesRepository) :
     AddQuoteToFavouriteBaseUseCase {
-    override fun invoke(params: Quote): Long {
-        return quotesRepository.addFavouriteQuote(params)
+    override suspend fun invoke(params: Quote): Long {
+        return favouriteQuotesRepository.addFavouriteQuote(params)
     }
 
 }

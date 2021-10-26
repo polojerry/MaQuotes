@@ -1,4 +1,4 @@
-package com.pol0.repository
+package com.pol0.repository.repositories
 
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
@@ -36,28 +36,8 @@ class QuoteRepositoryImpl @Inject constructor(
         ).flow
     }
 
-    override fun getFavouriteQuotes(): Flow<PagingData<Quote>> {
-
-        val pagingSourceFactory =
-            quotesDatabase.quotesDao.favouriteQuotes().map {
-                it.toDomain()
-            }.asPagingSourceFactory()
-
-
-        @OptIn(ExperimentalPagingApi::class)
-        return Pager(
-            config = PagingConfig(pageSize = FAVOURITE_PAGE_SIZE, enablePlaceholders = false),
-            pagingSourceFactory = pagingSourceFactory
-        ).flow
-    }
-
-    override fun addFavouriteQuote(quote: Quote): Long {
-        return quotesDatabase.quotesDao.toggleFavourite(quote.id, !quote.isFavourite)
-    }
-
     companion object {
         const val NETWORK_PAGE_SIZE = 30
-        const val FAVOURITE_PAGE_SIZE = 4
     }
 
 }

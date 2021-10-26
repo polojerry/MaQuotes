@@ -16,7 +16,9 @@ import androidx.viewpager2.widget.MarginPageTransformer
 import com.google.android.material.snackbar.Snackbar
 import com.pol0.domain.models.Quote
 import com.pol0.maquotes.adapters.QuoteAdapter
+import com.pol0.maquotes.adapters.QuoteAdapter.OnClickListener
 import com.pol0.maquotes.databinding.HomeFragmentBinding
+import com.pol0.maquotes.model.QuotePresentation
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.collect
@@ -50,7 +52,9 @@ class HomeFragment : Fragment() {
             footer = QuoteLoadStateAdapter { quoteAdapter.retry() },
         )*/
 
-        quoteAdapter = QuoteAdapter()
+        quoteAdapter = QuoteAdapter(OnClickListener { quote ->
+            addToFavourite(quote)
+        })
 
         val compositePageTransformer = CompositePageTransformer().apply {
             addTransformer(MarginPageTransformer(40))
@@ -66,6 +70,19 @@ class HomeFragment : Fragment() {
             clipChildren = false
             offscreenPageLimit = 3
             setPageTransformer(compositePageTransformer)
+        }
+    }
+
+    private fun addToFavourite(quote: QuotePresentation) {
+        lifecycleScope.launch {
+            viewModel.addToFavourite(quote).collect {rows->
+                if(rows != -1L){
+                    Snackbar.make(binding.root, "Successfully added to favourites", Snackbar.LENGTH_SHORT).show()
+                }else{
+                    Snackbar.make(binding.root, "Failed to add favourites", Snackbar.LENGTH_SHORT).show()
+                }
+
+            }
         }
     }
 
@@ -93,7 +110,7 @@ class HomeFragment : Fragment() {
 
     }
 
-    private suspend fun displayQuotes(pagedQuotes: PagingData<Quote>) {
+    private suspend fun displayQuotes(pagedQuotes: PagingData<QuotePresentation>) {
         quoteAdapter.submitData(pagedQuotes)
     }
 

@@ -10,6 +10,11 @@
         <item name="backgroundTint">?attr/colorControlNormal</item>
         <item name="android:textColor">?attr/colorOnSecondary</item>
         <item name="textAllCaps">false</item>
+    </style>
 
+    <style name="Widget.MaQuotes.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemTextColor">@color/bottom_nav_color</item>
+        <item name="itemIconTint">@color/bottom_nav_color</item>
+        <item name="labelVisibilityMode">labeled</item>
     </style>
 </resources>

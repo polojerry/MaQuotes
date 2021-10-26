@@ -1,6 +1,11 @@
-package com.pol0.domain.models
+package com.pol0.local.models
 
-data class Quote(
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "favourite_quote_table")
+data class FavouriteQuoteEntity(
+    @PrimaryKey
     val id: String,
     val author: String,
     val authorSlug: String,

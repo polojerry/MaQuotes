@@ -83,6 +83,11 @@ dependencies {
     implementation(Libraries.gson)
     implementation(Libraries.loggingInterceptor)
 
+    //Room
+    implementation(Libraries.roomRuntime)
+    implementation(Libraries.roomKtx)
+    kapt(Libraries.roomKapt)
+
     //Test
     testImplementation(TestLibraries.junit4)
     testImplementation(TestLibraries.extJunit)

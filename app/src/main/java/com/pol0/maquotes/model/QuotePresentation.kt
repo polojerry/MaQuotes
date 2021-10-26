@@ -1,6 +1,6 @@
-package com.pol0.domain.models
+package com.pol0.maquotes.model
 
-data class Quote(
+data class QuotePresentation(
     val id: String,
     val author: String,
     val authorSlug: String,
@@ -9,4 +9,5 @@ data class Quote(
     val dateModified: String,
     val length: Int,
     val tags: List<String>,
+    val isFavourite : Boolean = false
 )
