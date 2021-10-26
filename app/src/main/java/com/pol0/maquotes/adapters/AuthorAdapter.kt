@@ -8,11 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.pol0.maquotes.databinding.ItemAuthorBinding
 import com.pol0.maquotes.model.AuthorPresentation
 
-class AuthorAdapter :
+class AuthorAdapter (private val onClickListener: OnClickListener) :
     PagingDataAdapter<AuthorPresentation, AuthorAdapter.AuthorViewHolder>(AuthorComparator()) {
     override fun onBindViewHolder(holder: AuthorViewHolder, position: Int) {
         val author = getItem(position)
-        holder.bind(author)
+        holder.bind(author,onClickListener)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AuthorViewHolder {
@@ -37,12 +37,19 @@ class AuthorAdapter :
 
     }
 
+    class OnClickListener(val onClickListener: (author: AuthorPresentation) -> Unit) {
+        fun onClick(author: AuthorPresentation) = onClickListener(author)
+    }
+
     class AuthorViewHolder(private val binding: ItemAuthorBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(author: AuthorPresentation?) {
+        fun bind(author: AuthorPresentation?, onClickListener: OnClickListener) {
             author?.let {
                 binding.author = it
                 binding.executePendingBindings()
+                binding.root.setOnClickListener {
+                    onClickListener.onClick(author)
+                }
             }
         }
 

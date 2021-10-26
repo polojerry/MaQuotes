@@ -42,4 +42,10 @@ object UseCaseModule {
     fun providesRecommendedAuthorsUseCase(authorsRepository: AuthorsRepository) : FetchRecommendedAuthorsUseCase {
         return FetchRecommendedAuthorsUseCase(authorsRepository)
     }
+
+    @Provides
+    @Singleton
+    fun providesFetchQuotesByAuthorUseCase(quotesRepository: QuotesRepository) : FetchQuotesByAuthorUseCase {
+        return FetchQuotesByAuthorUseCase(quotesRepository)
+    }
 }

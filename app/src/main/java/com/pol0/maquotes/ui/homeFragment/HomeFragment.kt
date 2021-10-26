@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import androidx.paging.PagingData
@@ -21,12 +22,14 @@ import com.pol0.maquotes.adapters.QuoteAdapter.OnClickListener
 import com.pol0.maquotes.databinding.HomeFragmentBinding
 import com.pol0.maquotes.model.AuthorPresentation
 import com.pol0.maquotes.model.QuotePresentation
+import com.pol0.maquotes.ui.authorsFragment.AuthorsFragmentDirections
 import com.pol0.maquotes.ui.authorsFragment.AuthorsViewModel
 import com.pol0.maquotes.ui.authorsFragment.AuthorsViewModel.AuthorsUiState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import kotlin.math.abs
 
 @InternalCoroutinesApi
@@ -61,7 +64,9 @@ class HomeFragment : Fragment() {
         quoteAdapter = QuoteAdapter(OnClickListener { quote ->
             addToFavourite(quote)
         })
-        recommendedAuthorAdapter = AuthorAdapter()
+        recommendedAuthorAdapter = AuthorAdapter(AuthorAdapter.OnClickListener{author->
+            navigateToAuthorDetails(author)
+        })
 
         val compositePageTransformer = CompositePageTransformer().apply {
             addTransformer(MarginPageTransformer(40))
@@ -79,6 +84,15 @@ class HomeFragment : Fragment() {
             setPageTransformer(compositePageTransformer)
         }
         binding.recyclerViewRecommendedAuthors.adapter = recommendedAuthorAdapter
+    }
+
+    private fun navigateToAuthorDetails(author: AuthorPresentation) {
+        try {
+            val action = HomeFragmentDirections.actionHomeFragmentToAuthorDetailsFragment(author)
+            findNavController().navigate(action)
+        } catch (exception: Exception) {
+            Timber.e(exception)
+        }
     }
 
     private fun addToFavourite(quote: QuotePresentation) {

@@ -8,25 +8,25 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import androidx.paging.PagingData
-import com.pol0.maquotes.R
 import com.pol0.maquotes.adapters.AuthorAdapter
 import com.pol0.maquotes.databinding.AuthorsFragmentBinding
 import com.pol0.maquotes.model.AuthorPresentation
 import com.pol0.maquotes.ui.authorsFragment.AuthorsViewModel.AuthorsUiState
-import com.pol0.maquotes.ui.homeFragment.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @AndroidEntryPoint
 class AuthorsFragment : Fragment() {
 
     private val viewModel: AuthorsViewModel by activityViewModels()
 
-    private lateinit var binding : AuthorsFragmentBinding
+    private lateinit var binding: AuthorsFragmentBinding
     private lateinit var recommendedAuthorsAdapter: AuthorAdapter
     private lateinit var authorsAdapter: AuthorAdapter
 
@@ -35,7 +35,7 @@ class AuthorsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = AuthorsFragmentBinding.inflate(layoutInflater,container, false)
+        binding = AuthorsFragmentBinding.inflate(layoutInflater, container, false)
 
         setDisplay()
         setCollectors()
@@ -45,11 +45,24 @@ class AuthorsFragment : Fragment() {
 
 
     private fun setDisplay() {
-        recommendedAuthorsAdapter = AuthorAdapter()
-        authorsAdapter = AuthorAdapter()
+        recommendedAuthorsAdapter = AuthorAdapter(AuthorAdapter.OnClickListener { author ->
+            navigateToAuthorDetails(author)
+        })
+        authorsAdapter = AuthorAdapter(AuthorAdapter.OnClickListener { author ->
+            navigateToAuthorDetails(author)
+        })
 
         binding.recyclerViewRecommendedAuthors.adapter = recommendedAuthorsAdapter
         binding.recyclerViewAuthors.adapter = authorsAdapter
+    }
+
+    private fun navigateToAuthorDetails(author: AuthorPresentation) {
+        try {
+            val action = AuthorsFragmentDirections.actionAuthorsFragmentToAuthorDetailsFragment(author)
+            findNavController().navigate(action)
+        } catch (exception: Exception) {
+            Timber.e(exception)
+        }
     }
 
     private fun setCollectors() {
@@ -109,7 +122,7 @@ class AuthorsFragment : Fragment() {
             binding.textLabelRecommendedAuthors.isVisible = true
         }*/
 
-        if(recommendedAuthorsAdapter.itemCount > 0){
+        if (recommendedAuthorsAdapter.itemCount > 0) {
             binding.textLabelRecommendedAuthors.isVisible = true
         }
     }
@@ -124,14 +137,14 @@ class AuthorsFragment : Fragment() {
             recommendedAuthorsAdapter.itemCount > 0) {
             binding.textLabelAuthors.isVisible = true
         }*/
-        if(authorsAdapter.itemCount > 0){
+        if (authorsAdapter.itemCount > 0) {
             binding.textLabelAuthors.isVisible = true
         }
     }
 
 
     private suspend fun displayRecommendedAuthors(pagedAuthors: PagingData<AuthorPresentation>) {
-       recommendedAuthorsAdapter.submitData(pagedAuthors)
+        recommendedAuthorsAdapter.submitData(pagedAuthors)
     }
 
     private suspend fun displayAuthors(pagedAuthors: PagingData<AuthorPresentation>) {

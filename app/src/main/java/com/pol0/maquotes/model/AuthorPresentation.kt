@@ -1,5 +1,9 @@
 package com.pol0.maquotes.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class AuthorPresentation(
     val id: String,
     val bio: String,
@@ -10,4 +14,4 @@ data class AuthorPresentation(
     val name: String,
     val quoteCount: Int,
     val slug: String
-)
+):Parcelable
