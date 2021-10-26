@@ -10,7 +10,7 @@ import com.pol0.local.database.QuotesDatabase
 import com.pol0.local.models.QuotesRemoteKeysEntity
 import com.pol0.remote.api.AuthorsApi
 import com.pol0.repository.mappers.toEntity
-import com.samples.quotestestrun.data.local.models.authors.AuthorsRemoteKeysEntity
+import com.pol0.local.models.authors.AuthorsRemoteKeysEntity
 import retrofit2.HttpException
 import java.io.IOException
 

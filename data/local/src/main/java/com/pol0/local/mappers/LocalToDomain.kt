@@ -5,7 +5,7 @@ import com.pol0.domain.models.FavouriteQuote
 import com.pol0.domain.models.Quote
 import com.pol0.local.models.FavouriteQuoteEntity
 import com.pol0.local.models.QuoteEntity
-import com.samples.quotestestrun.data.local.models.authors.AuthorEntity
+import com.pol0.local.models.authors.AuthorEntity
 
 fun QuoteEntity.toDomain(): Quote {
     return Quote(

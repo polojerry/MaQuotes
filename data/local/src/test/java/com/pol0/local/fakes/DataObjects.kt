@@ -3,8 +3,7 @@ package com.pol0.local.fakes
 import com.pol0.domain.models.Author
 import com.pol0.domain.models.Quote
 import com.pol0.local.models.QuoteEntity
-import com.samples.quotestestrun.data.local.models.authors.AuthorEntity
-import org.bouncycastle.asn1.cms.AuthEnvelopedDataParser
+import com.pol0.local.models.authors.AuthorEntity
 
 object DataObjects {
 
