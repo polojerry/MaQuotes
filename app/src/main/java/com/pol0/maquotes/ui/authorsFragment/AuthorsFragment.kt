@@ -102,7 +102,14 @@ class AuthorsFragment : Fragment() {
         val isInitialLoadOrRefresh = loadState.source.refresh is LoadState.Loading
         binding.progressRecommendedAuthors.isVisible = isInitialLoadOrRefresh
 
-        if (loadState.refresh is LoadState.NotLoading && recommendedAuthorsAdapter.itemCount > 0) {
+        /*if (loadState.refresh is LoadState.NotLoading &&
+            loadState.prepend is LoadState.NotLoading &&
+            loadState.append is LoadState.NotLoading &&
+            recommendedAuthorsAdapter.itemCount > 0) {
+            binding.textLabelRecommendedAuthors.isVisible = true
+        }*/
+
+        if(recommendedAuthorsAdapter.itemCount > 0){
             binding.textLabelRecommendedAuthors.isVisible = true
         }
     }
@@ -111,7 +118,13 @@ class AuthorsFragment : Fragment() {
         val isInitialLoadOrRefresh = loadState.source.refresh is LoadState.Loading
         binding.progressAuthors.isVisible = isInitialLoadOrRefresh
 
-        if (loadState.refresh is LoadState.NotLoading && recommendedAuthorsAdapter.itemCount > 0) {
+        /*if (loadState.refresh is LoadState.NotLoading &&
+            loadState.prepend is LoadState.NotLoading &&
+            loadState.append is LoadState.NotLoading &&
+            recommendedAuthorsAdapter.itemCount > 0) {
+            binding.textLabelAuthors.isVisible = true
+        }*/
+        if(authorsAdapter.itemCount > 0){
             binding.textLabelAuthors.isVisible = true
         }
     }

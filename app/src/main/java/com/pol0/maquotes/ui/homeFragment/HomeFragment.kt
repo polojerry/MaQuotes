@@ -147,7 +147,13 @@ class HomeFragment : Fragment() {
         val isInitialLoadOrRefresh = loadState.source.refresh is LoadState.Loading
         binding.progressRecommendedAuthors.isVisible = isInitialLoadOrRefresh
 
-        if (loadState.refresh is LoadState.NotLoading && recommendedAuthorAdapter.itemCount > 0) {
+        /*if (loadState.refresh is LoadState.NotLoading &&
+            loadState.prepend is LoadState.NotLoading &&
+            loadState.append is LoadState.NotLoading &&
+            recommendedAuthorAdapter.itemCount > 0) {
+            binding.textLabelRecommendedAuthors.isVisible = true
+        }*/
+        if(recommendedAuthorAdapter.itemCount > 0){
             binding.textLabelRecommendedAuthors.isVisible = true
         }
     }

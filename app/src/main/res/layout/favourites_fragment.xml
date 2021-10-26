@@ -46,6 +46,31 @@
             tools:itemCount="4"
             tools:listitem="@layout/item_quote_outlined" />
 
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:layout_gravity="center"
+            app:layout_constraintBottom_toBottomOf="@+id/recycler_view_favourite_quotes"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline_toolbar_favourites"/>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_label_no_favourite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:visibility="visible"
+            android:visibility="invisible"
+            android:text="@string/you_have_no_favourite_quote_yet"
+            app:layout_constraintBottom_toBottomOf="@+id/recycler_view_favourite_quotes"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline_toolbar_favourites" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_load_more"
             style="@style/Widget.MaQuotes.Button.ButtonGreen"
@@ -53,6 +78,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
             android:text="@string/load_more"
+            android:visibility="invisible"
+            tools:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/container_toolbar_favourites" />
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,4 +11,5 @@
     <string name="recommended_authors">Recommended Authors</string>
     <string name="others">Others</string>
     <string name="authors">Authors</string>
+    <string name="you_have_no_favourite_quote_yet">You have no favourite quote yet</string>
 </resources>
