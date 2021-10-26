@@ -7,4 +7,6 @@ import kotlinx.coroutines.flow.Flow
 interface QuotesRepository {
 
     fun fetchQuotes(): Flow<PagingData<Quote>>
+
+    fun getFavouriteQuotes() : Flow<PagingData<Quote>>
 }
