@@ -15,4 +15,5 @@
     <string name="bio">Bio</string>
     <string name="famous_quote">Famous Quote</string>
     <string name="no_famous_quote">No Famous Quote Available, Kingly read more quotes to update our database</string>
+    <string name="apostrophe">“</string>
 </resources>
