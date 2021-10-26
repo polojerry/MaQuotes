@@ -8,4 +8,6 @@ interface QuotesRepository {
 
     fun fetchQuotes(): Flow<PagingData<Quote>>
 
+    fun fetchQuotesByAuthor(authorSlug : String) : Flow<PagingData<Quote>>
+
 }
