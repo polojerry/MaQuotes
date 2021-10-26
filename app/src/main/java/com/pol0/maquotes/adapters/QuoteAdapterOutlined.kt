@@ -8,13 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.pol0.maquotes.databinding.ItemQuoteOutlinedBinding
 import com.pol0.maquotes.model.QuotePresentation
 
-class QuoteAdapterOutlined(private val favouriteClickListener: OnClickListener) :
+class QuoteAdapterOutlined :
     PagingDataAdapter<QuotePresentation, QuoteAdapterOutlined.QuoteOutlinedViewHolder>(
         QuoteComparator()
     ) {
     override fun onBindViewHolder(holder: QuoteOutlinedViewHolder, position: Int) {
         val quoteItem = getItem(position)
-        holder.bind(quoteItem, favouriteClickListener)
+        holder.bind(quoteItem)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuoteOutlinedViewHolder {
@@ -39,19 +39,15 @@ class QuoteAdapterOutlined(private val favouriteClickListener: OnClickListener) 
 
     }
 
-    class OnClickListener(val onClickListener: (quote: QuotePresentation) -> Unit) {
-        fun onClick(quote: QuotePresentation) = onClickListener(quote)
-    }
-
     class QuoteOutlinedViewHolder(private val binding: ItemQuoteOutlinedBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(quoteItem: QuotePresentation?, favouriteClickListener: OnClickListener) {
+        fun bind(quoteItem: QuotePresentation?) {
             quoteItem?.let { quote ->
-                binding.quote = quote
-                binding.imageViewFavourite.setOnClickListener {
-                    favouriteClickListener.onClick(quote)
+
+                with(binding) {
+                    setQuote(quote)
+                    executePendingBindings()
                 }
-                binding.executePendingBindings()
             }
         }
 

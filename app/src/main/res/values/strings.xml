@@ -6,4 +6,6 @@
     <string name="retry">Retry</string>
     <string name="author_name_format">-%s</string>
     <string name="favourites">Favourites</string>
+    <string name="load_more">Load more</string>
+    <string name="your_quotes">Your Quotes</string>
 </resources>

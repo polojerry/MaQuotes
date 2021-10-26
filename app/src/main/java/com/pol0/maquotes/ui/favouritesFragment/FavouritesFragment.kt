@@ -9,7 +9,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.PagingData
 import com.pol0.maquotes.adapters.QuoteAdapterOutlined
-import com.pol0.maquotes.adapters.QuoteAdapterOutlined.OnClickListener
 import com.pol0.maquotes.databinding.FavouritesFragmentBinding
 import com.pol0.maquotes.model.QuotePresentation
 import com.pol0.maquotes.ui.favouritesFragment.FavouritesViewModel.FavouriteQuoteUiState
@@ -36,13 +35,9 @@ class FavouritesFragment : Fragment() {
     }
 
     private fun setDisplay() {
-        favouriteQuoteAdapter = QuoteAdapterOutlined(OnClickListener { quote ->
-
-        })
-
+        favouriteQuoteAdapter = QuoteAdapterOutlined()
         binding.recyclerViewFavouriteQuotes.adapter = favouriteQuoteAdapter
     }
-
 
     private fun setCollectors() {
         lifecycleScope.launchWhenCreated {
