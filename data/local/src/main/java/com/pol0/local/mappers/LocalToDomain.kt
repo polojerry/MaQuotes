@@ -13,5 +13,6 @@ fun QuoteEntity.toDomain(): Quote {
         dateModified,
         length,
         tags,
+        isFavourite
     )
 }

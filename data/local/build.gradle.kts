@@ -57,4 +57,5 @@ dependencies {
     testImplementation(TestLibraries.truth)
     testImplementation(TestLibraries.testRunner)
     testImplementation(TestLibraries.roboelectric)
+    testImplementation(TestLibraries.rules)
 }

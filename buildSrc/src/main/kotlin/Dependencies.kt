@@ -52,6 +52,7 @@ object Versions {
     const val mockWebServer = "4.9.0"
     const val roboelectric = "4.5-beta-1"
     const val mockito = "4.0.0"
+    const val rules = "1.4.0"
 
     // Gradle Plugins
     const val gradleBuild = "7.0.3"
@@ -143,6 +144,7 @@ object TestLibraries {
     const val mockWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.mockWebServer}"
     const val roboelectric = "org.robolectric:robolectric:${Versions.roboelectric}"
     const val mockitoKotlin = "org.mockito.kotlin:mockito-kotlin:${Versions.mockito}"
+    const val rules = "androidx.test:rules:${Versions.rules}"
 }
 
 
