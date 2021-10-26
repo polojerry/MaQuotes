@@ -1,4 +1,4 @@
-package com.pol0.local.dao
+package com.pol0.local.dao.quotes
 
 import androidx.paging.DataSource
 import androidx.room.Dao

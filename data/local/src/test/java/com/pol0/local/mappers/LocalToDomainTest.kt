@@ -8,9 +8,19 @@ class LocalToDomainTest {
 
     @Test
     fun `when toDomain is called on QuoteEntity Object, it should be converted to a corresponding domain object` () {
-        val expected = DataObjects.quote
+        val expected = DataObjects.Quote.quote
 
-        val actual = DataObjects.quoteEntity.toDomain()
+        val actual = DataObjects.Quote.quoteEntity.toDomain()
+
+        Truth.assertThat(expected).isEqualTo(actual)
+
+    }
+
+    @Test
+    fun `when toDomain is called on AuthorEntity Object, it should be converted to a corresponding domain object` () {
+        val expected = DataObjects.Author.author
+
+        val actual = DataObjects.Author.authorLocal.toDomain()
 
         Truth.assertThat(expected).isEqualTo(actual)
 
