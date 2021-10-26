@@ -16,6 +16,9 @@ interface QuotesDao {
     @Query("SELECT * FROM QUOTES_TABLE")
     fun quotes(): DataSource.Factory<Int, QuoteEntity>
 
+    @Query("SELECT * FROM QUOTES_TABLE WHERE authorSlug= :authorSlug")
+    fun quotesByAuthor(authorSlug: String): DataSource.Factory<Int, QuoteEntity>
+
     @Query("DELETE FROM QUOTES_TABLE")
     fun clearQuotes()
 

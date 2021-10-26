@@ -36,8 +36,22 @@ class QuoteRepositoryImpl @Inject constructor(
         ).flow
     }
 
+    override fun fetchQuotesByAuthor(authorSlug: String): Flow<PagingData<Quote>> {
+        val pagingSourceFactory =
+            quotesDatabase.quotesDao.quotesByAuthor(authorSlug).map {
+                it.toDomain()
+            }.asPagingSourceFactory()
+
+        @OptIn(ExperimentalPagingApi::class)
+        return Pager(
+            config = PagingConfig(pageSize = LOCAL_PAGE_SIZE, enablePlaceholders = false),
+            pagingSourceFactory = pagingSourceFactory
+        ).flow
+    }
+
     companion object {
         const val NETWORK_PAGE_SIZE = 30
+        const val LOCAL_PAGE_SIZE = 30
     }
 
 }
