@@ -7,15 +7,14 @@ import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
 import com.pol0.domain.models.Author
 import com.pol0.local.database.QuotesDatabase
-import com.pol0.local.models.QuotesRemoteKeysEntity
+import com.pol0.local.models.authors.RecommendedAuthorsRemoteKeysEntity
 import com.pol0.remote.api.AuthorsApi
-import com.pol0.repository.mappers.toEntity
-import com.pol0.local.models.authors.AuthorsRemoteKeysEntity
+import com.pol0.repository.mappers.toRecommendedAuthorEntity
 import retrofit2.HttpException
 import java.io.IOException
 
 @OptIn(ExperimentalPagingApi::class)
-class AuthorsRemoteMediator(
+class RecommendedAuthorsRemoteMediator(
     private val authorsApi: AuthorsApi,
     private val quotesDatabase: QuotesDatabase
 ) : RemoteMediator<Int, Author>() {
@@ -48,23 +47,27 @@ class AuthorsRemoteMediator(
         }
 
         try {
-            val response = authorsApi.fetchAuthors(page)
+            val response = authorsApi.fetchRecommendedAuthors(page = page)
             val authors = response.results
             val endOfPaginationReached = authors.isEmpty()
 
             quotesDatabase.withTransaction {
                 if (loadType == LoadType.REFRESH) {
-                    quotesDatabase.authorsRemoteKeysDao.clearRemoteKeys()
-                    quotesDatabase.authorsDao.clearAuthors()
+                    quotesDatabase.recommendedAuthorsRemoteKeysDao.clearRemoteKeys()
+                    quotesDatabase.recommendedAuthorsDao.clearRecommendedAuthors()
                 }
 
                 val prevKey = if (page == AUTHORS_STARTING_PAGE_NUMBER) null else page - 1
                 val nextKey = if (endOfPaginationReached) null else page + 1
                 val keys = authors.map {
-                    AuthorsRemoteKeysEntity(authorId = it.id, prevKey = prevKey, nextKey = nextKey)
+                    RecommendedAuthorsRemoteKeysEntity(
+                        authorId = it.id,
+                        prevKey = prevKey,
+                        nextKey = nextKey
+                    )
                 }
-                quotesDatabase.authorsRemoteKeysDao.insertAll(keys)
-                quotesDatabase.authorsDao.insertAuthors(authors = authors.map { it.toEntity() })
+                quotesDatabase.recommendedAuthorsRemoteKeysDao.insertAll(keys)
+                quotesDatabase.recommendedAuthorsDao.insertRecommendedAuthors(authors = authors.map { it.toRecommendedAuthorEntity() })
 
             }
 
@@ -77,35 +80,35 @@ class AuthorsRemoteMediator(
         }
     }
 
-    private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, Author>): AuthorsRemoteKeysEntity? {
+    private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, Author>): RecommendedAuthorsRemoteKeysEntity? {
         return state.pages.lastOrNull() { it.data.isNotEmpty() }?.data?.lastOrNull()
             ?.let { author ->
                 // Get the remote keys of the last item retrieved
-                quotesDatabase.authorsRemoteKeysDao.remoteKeysAuthorId(author.id)
+                quotesDatabase.recommendedAuthorsRemoteKeysDao.remoteKeysAuthorId(author.id)
             }
     }
 
 
     private suspend fun getRemoteKeyClosestToCurrentPosition(
         state: PagingState<Int, Author>
-    ): AuthorsRemoteKeysEntity? {
+    ): RecommendedAuthorsRemoteKeysEntity? {
         // The paging library is trying to load data after the anchor position
         // Get the item closest to the anchor position
         return state.anchorPosition?.let { position ->
             state.closestItemToPosition(position)?.id?.let { authorId ->
-                quotesDatabase.authorsRemoteKeysDao.remoteKeysAuthorId(authorId)
+                quotesDatabase.recommendedAuthorsRemoteKeysDao.remoteKeysAuthorId(authorId)
             }
         }
     }
 
 
-    private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, Author>): AuthorsRemoteKeysEntity? {
+    private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, Author>): RecommendedAuthorsRemoteKeysEntity? {
         // Get the first page that was retrieved, that contained items.
         // From that first page, get the first item
         return state.pages.firstOrNull { it.data.isNotEmpty() }?.data?.firstOrNull()
             ?.let { author ->
                 // Get the remote keys of the first items retrieved
-                quotesDatabase.authorsRemoteKeysDao.remoteKeysAuthorId(author.id)
+                quotesDatabase.recommendedAuthorsRemoteKeysDao.remoteKeysAuthorId(author.id)
             }
     }
 

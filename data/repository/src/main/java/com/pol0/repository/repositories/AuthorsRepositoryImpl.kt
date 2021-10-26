@@ -11,6 +11,7 @@ import com.pol0.local.mappers.toDomain
 import com.pol0.remote.api.AuthorsApi
 import com.pol0.repository.paggingsource.RecommendedAuthorsPagingSource
 import com.pol0.repository.remotemadiators.AuthorsRemoteMediator
+import com.pol0.repository.remotemadiators.RecommendedAuthorsRemoteMediator
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -40,11 +41,30 @@ class AuthorsRepositoryImpl @Inject constructor(
     }
 
     override fun fetchRecommendedAuthors(): Flow<PagingData<Author>> {
-        @OptIn(ExperimentalPagingApi::class)
+        /*@OptIn(ExperimentalPagingApi::class)
         return Pager(
             config = PagingConfig(pageSize = NETWORK_PAGE_SIZE, enablePlaceholders = false),
             pagingSourceFactory = { RecommendedAuthorsPagingSource(authorsApi) }
+        ).flow*/
+
+        val pagingSourceFactory =
+            quotesDatabase.recommendedAuthorsDao.recommendedAuthors().map {
+                it.toDomain()
+            }.asPagingSourceFactory()
+
+        @OptIn(ExperimentalPagingApi::class)
+        return Pager(
+            config = PagingConfig(
+                pageSize = NETWORK_PAGE_SIZE,
+                enablePlaceholders = false
+            ),
+            remoteMediator = RecommendedAuthorsRemoteMediator(
+                authorsApi,
+                quotesDatabase
+            ),
+            pagingSourceFactory = pagingSourceFactory
         ).flow
+
     }
 
     companion object {

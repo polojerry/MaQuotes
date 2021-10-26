@@ -6,6 +6,7 @@ import com.pol0.domain.models.Quote
 import com.pol0.local.models.FavouriteQuoteEntity
 import com.pol0.local.models.QuoteEntity
 import com.pol0.local.models.authors.AuthorEntity
+import com.pol0.local.models.authors.RecommendedAuthorEntity
 
 fun QuoteEntity.toDomain(): Quote {
     return Quote(
@@ -47,6 +48,20 @@ fun Quote.toFavourite(): FavouriteQuoteEntity {
 }
 
 fun AuthorEntity.toDomain() : Author{
+    return Author(
+        id,
+        bio,
+        dateAdded,
+        dateModified,
+        description,
+        link,
+        name,
+        quoteCount,
+        slug
+    )
+}
+
+fun RecommendedAuthorEntity.toDomain() : Author{
     return Author(
         id,
         bio,
