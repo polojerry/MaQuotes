@@ -158,5 +158,6 @@ object AndroidSdk {
 object BuildModules {
     const val domainModule = ":domain"
     const val remoteModule = ":data:remote"
+    const val localModule = ":data:local"
     const val repositoryModule = ":data:repository"
 }

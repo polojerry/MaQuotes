@@ -40,6 +40,7 @@ dependencies {
     //Local Modules
     implementation(project(BuildModules.domainModule))
     implementation(project(BuildModules.remoteModule))
+    implementation(project(BuildModules.localModule))
 
     //Retrofit
     implementation(Libraries.retrofit)
@@ -48,7 +49,13 @@ dependencies {
 
     //Hilt
     implementation(Libraries.hilt)
+    implementation(project(mapOf("path" to ":data:local")))
     kapt(Libraries.hiltKapt)
+
+    //Room
+    implementation(Libraries.roomRuntime)
+    implementation(Libraries.roomKtx)
+    kapt(Libraries.roomKapt)
 
     //Test
     testImplementation(TestLibraries.junit4)

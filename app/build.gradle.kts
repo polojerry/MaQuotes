@@ -51,6 +51,7 @@ dependencies {
     //Local Modules
     implementation(project(BuildModules.domainModule))
     implementation(project(BuildModules.remoteModule))
+    implementation(project(BuildModules.localModule))
     implementation(project(BuildModules.repositoryModule))
 
     //Ktx Core
