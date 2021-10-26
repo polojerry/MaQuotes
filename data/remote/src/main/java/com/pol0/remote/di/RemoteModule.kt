@@ -1,6 +1,7 @@
 package com.pol0.remote.di
 
 import com.pol0.remote.BuildConfig
+import com.pol0.remote.api.AuthorsApi
 import com.pol0.remote.api.QuoteApi
 import dagger.Module
 import dagger.Provides
@@ -48,6 +49,12 @@ object RemoteModule {
     @Singleton
     fun provideQuoteApi(retrofit: Retrofit): QuoteApi {
         return retrofit.create(QuoteApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideAuthorsApi(retrofit: Retrofit): AuthorsApi {
+        return retrofit.create(AuthorsApi::class.java)
     }
 
     private const val BASE_URL = "https://quotable.io/"
