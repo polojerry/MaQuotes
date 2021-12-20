@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">MaQuotes</string>
+    <string name="info">Info</string>
+    <string name="home">Home</string>
+    <string name="category">Category</string>
+    <string name="retry">Retry</string>
+    <string name="author_name_format">-%s</string>
+    <string name="favourites">Favourites</string>
+    <string name="load_more">Load more</string>
+    <string name="your_quotes">Your Quotes</string>
+    <string name="recommended_authors">Recommended Authors</string>
+    <string name="others">Others</string>
+    <string name="authors">Authors</string>
+    <string name="you_have_no_favourite_quote_yet">You have no favourite quote yet</string>
+    <string name="bio">Bio</string>
+    <string name="famous_quote">Famous Quote</string>
+    <string name="no_famous_quote">No Famous Quote Available, Kingly read more quotes to update our database</string>
+    <string name="apostrophe">“</string>
 </resources>

@@ -38,6 +38,9 @@ object Versions {
     const val retrofit = "2.9.0"
     const val loggingInterceptor = "4.9.0"
 
+    //Paging
+    const val paging = "3.0.1"
+
     //Version codes for all the test libraries
     const val junit4 = "4.13.1"
     const val testRunner = "1.3.1-alpha03"
@@ -48,6 +51,8 @@ object Versions {
     const val testCore = "1.0.0"
     const val mockWebServer = "4.9.0"
     const val roboelectric = "4.5-beta-1"
+    const val mockito = "4.0.0"
+    const val rules = "1.4.0"
 
     // Gradle Plugins
     const val gradleBuild = "7.0.3"
@@ -114,11 +119,15 @@ object Libraries {
 
     //Retrofit
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
-    const val moshi = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
+    const val gson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.loggingInterceptor}"
 
     //Coil
     const val coil = "io.coil-kt:coil:${Versions.coil}"
+
+    //Paging3
+    const val paging  = "androidx.paging:paging-runtime-ktx:${Versions.paging}"
+
 }
 
 object TestLibraries {
@@ -134,6 +143,8 @@ object TestLibraries {
     const val room = "androidx.room:room-testing:${Versions.room}"
     const val mockWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.mockWebServer}"
     const val roboelectric = "org.robolectric:robolectric:${Versions.roboelectric}"
+    const val mockitoKotlin = "org.mockito.kotlin:mockito-kotlin:${Versions.mockito}"
+    const val rules = "androidx.test:rules:${Versions.rules}"
 }
 
 
@@ -147,7 +158,8 @@ object AndroidSdk {
 }
 
 object BuildModules {
-    const val sharedModule = ":shared"
     const val domainModule = ":domain"
-    const val networkModule = ":data:network"
+    const val remoteModule = ":data:remote"
+    const val localModule = ":data:local"
+    const val repositoryModule = ":data:repository"
 }

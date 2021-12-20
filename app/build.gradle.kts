@@ -2,6 +2,9 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     id("kotlin-kapt")
+    id("kotlin-parcelize")
+    id("dagger.hilt.android.plugin")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -46,6 +49,12 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
+    //Local Modules
+    implementation(project(BuildModules.domainModule))
+    implementation(project(BuildModules.remoteModule))
+    implementation(project(BuildModules.localModule))
+    implementation(project(BuildModules.repositoryModule))
+
     //Ktx Core
     implementation(Libraries.ktxCore)
 
@@ -56,8 +65,29 @@ dependencies {
     implementation(Libraries.fragment)
     implementation(Libraries.legacySupport)
 
+    //Hilt
+    implementation(Libraries.hilt)
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
+    kapt(Libraries.hiltKapt)
+
     //Logging: Timber
     implementation(Libraries.timber)
+
+    //navigation
+    implementation(Libraries.navigationUiKtx)
+    implementation(Libraries.navigationFragmentKtx)
+
+    //Retrofit
+    implementation(Libraries.retrofit)
+    implementation(Libraries.gson)
+    implementation(Libraries.loggingInterceptor)
+
+    //Room
+    implementation(Libraries.roomRuntime)
+    implementation(Libraries.roomKtx)
+    kapt(Libraries.roomKapt)
 
     //Test
     testImplementation(TestLibraries.junit4)

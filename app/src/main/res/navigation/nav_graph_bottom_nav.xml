@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_bottom_nav.xml"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        tools:layout="@layout/home_fragment"
+        android:name="com.pol0.maquotes.ui.homeFragment.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_authorDetailsFragment"
+            app:destination="@id/authorDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favouritesFragment"
+        tools:layout="@layout/favourites_fragment"
+        android:name="com.pol0.maquotes.ui.favouritesFragment.FavouritesFragment"
+        android:label="FavouritesFragment" />
+    <fragment
+        android:id="@+id/authorsFragment"
+        android:name="com.pol0.maquotes.ui.authorsFragment.AuthorsFragment"
+        android:label="AuthorsFragment"
+        tools:layout="@layout/authors_fragment">
+        <action
+            android:id="@+id/action_authorsFragment_to_authorDetailsFragment"
+            app:destination="@id/authorDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/authorDetailsFragment"
+        android:name="com.pol0.maquotes.ui.authorDetails.AuthorDetailsFragment"
+        android:label="AuthorDetailsFragment"
+        tools:layout="@layout/author_details_fragment">
+        <argument
+            android:name="author"
+            app:argType="com.pol0.maquotes.model.AuthorPresentation"
+            app:nullable="true" />
+    </fragment>
+</navigation>
